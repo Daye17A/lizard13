@@ -1,0 +1,3 @@
+# The launcher is distributed as a RELEASE ASSET, never committed.
+# It is ~212 MB, which git handles badly and GitHub caps at 100 MB per file.
+*.exe
