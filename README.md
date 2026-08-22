@@ -1,4 +1,6 @@
-# FIFA 13 Ultimate Team — launcher
+# Lizard '13
+
+*FIFA 13 Ultimate Team — 2013, back online.*
 
 This is the launcher for a **private, invite-only FIFA 13 Ultimate Team server**
 run for a small group of friends. It is not affiliated with, endorsed by, or
@@ -10,12 +12,23 @@ EA's, which was shut down years ago.
 
 ## How to play
 
-1. Download **`PLAY-FIFA-13.exe`** from
+1. Download **`Lizard13.exe`** from
    [the latest release](../../releases/latest).
 2. Put it anywhere **except** your FIFA 13 folder — your Desktop is fine.
-3. Run it, enter the server address the host gave you, and press **Play**.
+3. Run it, **sign in** with the player name and password you chose — or press
+   **Create account** if this is your first time — and press **Play**.
 
-There is nothing else to install. No Python, no .NET, no config files.
+There is nothing else to install. No Python, no .NET, no config files. The
+server address is built in.
+
+Your club lives on the server, not in the launcher, so you can sign in from
+another PC and it will be exactly where you left it. This PC remembers you after
+the first sign-in; the password is only asked for again on a machine that has
+not seen you before.
+
+**Keep your recovery code.** It is shown once when you create your account and
+saved to a text file beside it. It is the way back in if you forget your
+password.
 
 ## Two warnings, so you don't think it's a virus
 
@@ -43,3 +56,14 @@ Send the host:
 
 That last one matters more than it sounds. Most "it's broken" reports turn out to
 be an old build, and the version tag is the fastest way to rule that out.
+
+## Updating
+
+The launcher checks for a newer release when it starts and offers to install it.
+Updating keeps your sign-in, your settings and your recovery code — the account
+is on the server, not in the file.
+
+One exception: if you are still on a build from before this was named Lizard '13,
+its updater is looking for a file that no longer exists and will quietly tell you
+that you are up to date. Download `Lizard13.exe` from the latest release by hand
+once, and it will keep itself current from then on.
