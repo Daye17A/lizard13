@@ -17,7 +17,9 @@
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: 72% 30%;
   image-rendering: auto;
+  transform: scale(1.12);
 }
 .site-header .brand-mark-image {
   width: 44px;
@@ -66,7 +68,9 @@
   overflow: hidden;
   border: 1px solid rgba(157, 255, 181, .2);
   border-radius: 26px;
-  background: #050907;
+  background:
+    radial-gradient(circle at 76% 40%, rgba(64,255,109,.16), transparent 18rem),
+    linear-gradient(155deg, #08110c, #030705 72%);
   box-shadow:
     0 38px 110px rgba(0,0,0,.42),
     0 0 90px rgba(73,238,111,.07);
@@ -74,20 +78,23 @@
 }
 .mascot-art {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 58% center;
-  filter: saturate(.94) contrast(1.02);
-  transform: scale(1.015);
+  width: min(94%, 480px);
+  height: auto;
+  right: 1.5%;
+  top: 66px;
+  left: auto;
+  bottom: auto;
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(1.02) contrast(1.045);
+  transform: none;
 }
 .mascot-vignette {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(3,8,5,.66) 0%, rgba(3,8,5,.05) 24%, rgba(3,8,5,.18) 50%, rgba(3,8,5,.88) 100%),
-    linear-gradient(90deg, rgba(3,8,5,.44) 0%, rgba(3,8,5,0) 45%);
+    linear-gradient(180deg, rgba(3,8,5,.56) 0%, rgba(3,8,5,.02) 24%, rgba(3,8,5,.08) 48%, rgba(3,8,5,.91) 100%),
+    linear-gradient(90deg, rgba(3,8,5,.38) 0%, rgba(3,8,5,0) 42%);
   z-index: 1;
 }
 .mascot-topline {
@@ -235,7 +242,11 @@
     padding-top: 64px;
   }
   .mascot-panel { min-height: 560px; }
-  .mascot-art { object-position: 60% center; }
+  .mascot-art {
+    width: min(92%, 480px);
+    right: 4%;
+    top: 62px;
+  }
   .split-section { gap: 48px; }
 }
 
@@ -243,6 +254,11 @@
   .section-block { padding: 70px 0; }
   .site-header .brand-mark-image { width: 40px; height: 40px; }
   .mascot-panel { min-height: 490px; border-radius: 20px; }
+  .mascot-art {
+    width: min(96%, 460px);
+    right: 2%;
+    top: 58px;
+  }
   .mascot-status-grid { grid-template-columns: 1fr 1fr; }
   .mascot-status-grid > div:nth-child(2) { border-right: 0; }
   .mascot-status-grid > div:nth-child(-n+2) { border-bottom: 1px solid rgba(154,255,183,.09); }
@@ -253,6 +269,7 @@
 
 @media (max-width: 520px) {
   .mascot-panel { min-height: 440px; }
+  .mascot-art { top: 52px; }
   .mascot-topline { top: 12px; left: 12px; }
   .mascot-status { left: 12px; right: 12px; bottom: 12px; padding: 14px; }
 }
