@@ -1,0 +1,82 @@
+name: publish-v2026.08.27.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-v2026.08.27.1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      TAG: v2026.08.27.1
+      EXPECTED_SHA256: 40409016fb3b628da01d5daf2f69759edcaaf9a1948a405c28706fd79dd15e00
+      EXPECTED_SIZE: '222679917'
+      ARTIFACT_URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-e390-81f4-8e0b-b952513e536f/raw?se=2026-08-27T16%3A12%3A20Z&sp=r&sv=2026-02-06&sr=b&scid=774f8242-6305-5e5e-82a2-18213ad45b21&skoid=d294dba5-36f7-432b-aab8-935656489847&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-27T07%3A43%3A34Z&ske=2026-08-28T07%3A43%3A34Z&sks=b&skv=2026-02-06&sig=%2B8FQOCQ306Arzoum0aaVfd6n39LvO5nh8JMWGL9/EDI%3D'
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download verified private build artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-all-errors "$ARTIFACT_URL" -o launcher-artifact.zip
+          mkdir artifact
+          unzip -q launcher-artifact.zip -d artifact
+          exe="$(find artifact -type f -name Lizard13.exe -print -quit)"
+          test -n "$exe"
+          cp "$exe" ./Lizard13.exe
+
+          actual_hash="$(sha256sum Lizard13.exe | awk '{print $1}')"
+          actual_size="$(stat -c '%s' Lizard13.exe)"
+          echo "Lizard13.exe sha256: $actual_hash"
+          echo "Lizard13.exe size: $actual_size"
+          test "$actual_hash" = "$EXPECTED_SHA256"
+          test "$actual_size" = "$EXPECTED_SIZE"
+
+      - name: Publish public launcher release
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > release-notes.md <<'EOF'
+          **Lizard '13 now uses the official project hostname.**
+
+          The launcher now connects through `server.lizard13.com` instead of the old `lizard13.ddnsgeek.com` address.
+
+          Nothing about your account, club, ports or sign-in changes. This is a branding and infrastructure move: the server can continue moving behind DNS without requiring a new launcher every time.
+
+          ## What's new
+          - Canonical server: `server.lizard13.com`
+          - Same backend and existing ports
+          - Existing accounts, clubs and settings are unchanged
+          - `--server=<IP-or-hostname>` fallback is still supported
+
+          ## Before you download
+          - You need a legitimate installed PC copy of FIFA 13.
+          - Lizard '13 does not distribute FIFA 13 or EA game files.
+          - The closed beta is still invite-only.
+
+          ## Windows warnings
+          The launcher is still unsigned, so SmartScreen may show **More info → Run anyway**. Antivirus may also flag the embedded launch helper because it attaches to the game process during startup.
+
+          Built as version `2026.8.27.1`.
+
+          SHA-256: `40409016fb3b628da01d5daf2f69759edcaaf9a1948a405c28706fd79dd15e00`
+          EOF
+
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; refusing to overwrite it."
+            exit 1
+          fi
+
+          gh release create "$TAG" ./Lizard13.exe \
+            --repo "$GITHUB_REPOSITORY" \
+            --target main \
+            --title "Lizard '13 — v2026.08.27.1 (lizard13.com)" \
+            --notes-file release-notes.md
