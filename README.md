@@ -2,7 +2,7 @@
 
 > **FIFA 13 Ultimate Team — 2013, back online.**
 
-Lizard '13 is the Windows launcher for a **private, invite-only FIFA 13 Ultimate Team revival server**.
+Lizard '13 is the Windows launcher for a **community-run FIFA 13 Ultimate Team revival**, currently in **BETA with invite-only access during testing**.
 
 It exists so players can use a legitimate PC copy of FIFA 13 against a community-run replacement service after the original EA FUT infrastructure was retired.
 
@@ -14,7 +14,7 @@ Lizard '13 does **not** include FIFA 13, game executables, or EA-owned game file
 
 The revival is built around the original FIFA 13 client, so the game still provides the menus, cards, squads, Store presentation and gameplay you remember.
 
-The private server currently supports the core shared FUT experience, including:
+The community server currently supports the core shared FUT experience, including:
 
 - account creation and sign-in;
 - persistent clubs, coins and inventories;
@@ -27,7 +27,7 @@ The private server currently supports the core shared FUT experience, including:
 - leaderboards and tournaments;
 - matchmaking and relayed online matches.
 
-The project is still in **closed beta / pre-beta hardening**, so some original FUT surfaces are still being reconstructed and some newer systems are deliberately being tested before they are enabled for everyone.
+The project is currently in **BETA**. Access is invite-only during this testing phase while stability, capacity and remaining client flows are improved.
 
 ---
 
@@ -37,7 +37,7 @@ The project is still in **closed beta / pre-beta hardening**, so some original F
 2. Put it somewhere convenient, such as your Desktop. Do **not** place it inside the FIFA 13 game folder.
 3. Run Lizard '13.
 4. If this is your first time, choose **Create account**. Otherwise sign in.
-5. Press **Play** and let the launcher prepare FIFA 13 for the private server.
+5. Press **Play** and let the launcher prepare FIFA 13 for the community server.
 6. Enter Ultimate Team normally from FIFA 13.
 
 You need a legitimate installed PC copy of FIFA 13.
@@ -83,7 +83,7 @@ Gameplay itself still runs in FIFA 13.
 
 ## Online matches
 
-Matchmaking is supported on the private server.
+Matchmaking is supported on the community server.
 
 The current production gameplay transport uses a **relay** so matches can work even when home routers/NAT make direct peer-to-peer connectivity unreliable.
 
@@ -97,7 +97,7 @@ The revival uses FIFA 13 card data rather than inventing modern replacement card
 
 Historical base cards, transfer versions and special cards are being reconstructed so individual FUT cards retain the club they actually represented at the time.
 
-The project is also developing a rotating live-special system so historical IF/TOTW, TOTS, MOTM and other cards are not all permanently available at once.
+Lizard TOTW rotates a 23-card team every hour from historical IF/TOTW, TOTS, MOTM and other special cards, controlling which active specials can be newly packed.
 
 Because the economy is shared, pack supply and special-card availability are treated carefully. Changes are tested before being enabled on the live server.
 
